@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Tim cho Hải </title>
+    <style>
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  body{
+      overflow: hidden;
+  }
+  .container{
+      width: 100%;
+      height: 100vh;
+      background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c355634a-3fa9-47ed-9413-a23865850506/df2jzoi-50dc0b7e-c276-4d74-9a41-bef780df4153.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MzNTU2MzRhLTNmYTktNDdlZC05NDEzLWEyMzg2NTg1MDUwNlwvZGYyanpvaS01MGRjMGI3ZS1jMjc2LTRkNzQtOWE0MS1iZWY3ODBkZjQxNTMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G2ebxbHvJWlrWpfhRlaLREHws8BlsWpXCt5an_SOvgU);
+      background-position: center;
+      background-size: cover;
+  }
+  span{
+      position: absolute;
+      filter: drop-shadow(0 0 1em rgba(0,0,0,0.5));
+      pointer-events: none;
+      animation: animHeart 1s linear infinite;
+  }
+  @keyframes animHeart {
+      0%,100%{
+          opacity: 0;
+      }
+      20%,80%{
+          opacity: 1;
+      }
+  }
+  span::before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(https://static.wikia.nocookie.net/honkaiimpact3_gamepedia_en/images/7/74/Herrscher_of_Human_-_Ego_%28Icon%29.png/revision/latest?cb=20231113012827);
+      background-size: cover;
+      animation: heart 1s linear infinite;
+  }
+  @keyframes heart {
+      0%{
+          transform: translate(0) rotate(0deg);
+      }
+      100%{
+          transform: translate(20em) rotate(360deg);
+      }
+  }
+  </style>
+</head>
+<body>
+    <div class="container" id="container"></div>
+    <script> document.addEventListener('mousemove', function(e){
+        let container = document.getElementById('container');
+        let heart = document.createElement('span');
+        let x = e.offsetX;
+        let y = e.offsetY;         
+        heart.style.left = x+'px';
+        heart.style.top = y+'px';
+        
+        let size = Math.random() * 80;
+        heart.style.width = 20 + size+'px';
+        heart.style.height = 20 + size+'px';
+    
+        let transformValue = Math.random() * 360;
+        heart.style.transform = 'rotate('+transformValue+'deg)';
+        
+        container.appendChild(heart);
+    
+        setTimeout(function(){
+          heart.remove();
+        },1000)
+      })
+    </script>
+</body>   
+</html>
